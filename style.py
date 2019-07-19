@@ -1,5 +1,6 @@
 from __future__ import print_function
 import sys, os, pdb
+import time
 sys.path.insert(0, 'src')
 import numpy as np, scipy.misc 
 from optimize import optimize
@@ -147,6 +148,7 @@ def main():
     for preds, losses, i, epoch in optimize(*args, **kwargs):
         style_loss, content_loss, tv_loss, loss = losses
 
+        print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         print('Epoch %d, Iteration: %d, Loss: %s' % (epoch, i, loss))
         to_print = (style_loss, content_loss, tv_loss)
         print('style: %s, content:%s, tv: %s' % to_print)
